@@ -23,8 +23,12 @@ function exit(numChildren, numAdults){
   adults = numAdults - adults
   children = numChildren - children
   if (numChildren < numAdults){
-    return true
-  }
+    return false
+  } 
+    if (numAdults < numChildren)
+    { return false}
+  if ( numAdults > adults || numChildren > children)
+  {return false}
 } 
 
 function occupancy ( numChildren, numAdults){
