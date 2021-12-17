@@ -12,42 +12,54 @@ let children = 0
 // the adults and children variables defined above.
 
 /* EXERCISE 1 */
-function enter(numChildren, numAdults) {
+function enter(numAdults, numChildren) {
+  if (numChildren > numAdults) {
+    return false
+
+  }
   adults = numAdults + adults
   children = numChildren + children
-  if (children > adults) {
-    return false
-  } else {
-    return true
-  }
+  return true
 }
+
 /* EXERCISE 2 */
-function leave(numChildren, numAdults) {
-  adults = numAdults - adults
-  children = numChildren - children
-  if (numChildren < numAdults || numAdults < numChildren) {
+function leave(numAdults, numChildren) {
+
+  const adultsLeft = adults - numAdults
+  const childrenLeft = children - numChildren
+
+  if (adultsLeft < childrenLeft) { 
+    return false 
+  }
+
+  if (numChildren > 0 && numAdults === 0) {
     return false
   }
-  if (numAdults > adults || numChildren > children) { return false }
-}
 
-/* EXERCISE 3 */
-function occupancy(numChildren, numAdults) {
-
-  let count = {
-    'adults': 1,
-    'children': 1
+  if (numChildren > children) {
+    return false
   }
-  numChildren = count.children
-  numAdults = count.adults
-  return count
+
+  adults =  adults - numAdults 
+  children = children - numChildren 
+  return true
+
 }
+  /* EXERCISE 3 */
+  function occupancy() {
+    return {
+      adults: adults,
+      children: children
+    }
+  }
 
 
-// TODO: Change the undefined values below to the name of your functions
-module.exports = {
-  enter: enter,
-  leave: leave,
-  occupancy: occupancy,
-  reset: reset
-}
+
+
+  // TODO: Change the undefined values below to the name of your functions
+  module.exports = {
+    enter: enter,
+    leave: leave,
+    occupancy: occupancy,
+    reset: reset
+  }
